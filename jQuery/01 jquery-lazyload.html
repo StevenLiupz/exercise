@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery-lazyload.js</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        div {
+            width: 600px; 
+            overflow: hidden;
+            margin: 10px auto;
+        }
+        div > a {
+            display: block;
+            width: 600px;
+            height: 400px;
+            margin-bottom: 10px;
+        }
+        div > a img {
+            width: 600px;
+            height: 400px;
+        }
+</style>
+<script src="../lib/jquery-3.2.1.js"></script>
+<script src="../lib/jquery.lazyload.js"></script>
+</head>
+<body>
+    <div>
+        <a href="javascript:;"><img src="http://via.placeholder.com/600x400" data-original="../images/lazyload-1.jpg" class="lazy" alt=""></a>
+        <a href="javascript:;"><img src="http://via.placeholder.com/600x400" data-original="../images/lazyload-2.jpg" class="lazy" alt=""></a>
+        <a href="javascript:;"><img src="http://via.placeholder.com/600x400" data-original="../images/lazyload-3.jpg" class="lazy" alt=""></a>
+        <a href="javascript:;"><img src="http://via.placeholder.com/600x400" data-original="../images/lazyload-4.jpg" class="lazy" alt=""></a>
+        <a href="javascript:;"><img src="http://via.placeholder.com/600x400" data-original="../images/lazyload-5.jpg" class="lazy" alt=""></a>
+        <a href="javascript:;"><img src="http://via.placeholder.com/600x400" data-original="../images/lazyload-6.jpg" class="lazy" alt=""></a>
+        <a href="javascript:;"><img src="http://via.placeholder.com/600x400" data-original="../images/lazyload-7.jpg" class="lazy" alt=""></a>
+    </div>
+
+    <script>
+        $("img.lazy").lazyload({
+            threshould: 300,
+            effect: "fadeIn",
+            failure_limit: 5
+        });
+    </script>
+</body>
+</html>
