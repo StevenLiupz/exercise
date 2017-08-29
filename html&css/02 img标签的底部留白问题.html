@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>img标签的上下留白问题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: skyblue;
+        }
+        
+        .box {
+            width: 450px;
+            margin: 20px auto;
+        }
+        /* 解决img标签上下留白的问题 */
+        
+        img {
+            /* 方法一： 将图片转为块级元素 */
+            display: block;
+            /* 方法二： 将图片设置为浮动 */
+            /* float: left; */
+            /* 方法三： 设置图片的垂直对齐方式 vertical-align: top | text-top | bottom | text-bottom*/
+            /* vertical-align: top; */
+            /* vertical-align: text-top; */
+        }
+    </style>
+</head>
+<div class="box">
+    <img src="../images/lazyload-1.jpg" alt="">
+    <img src="../images/lazyload-2.jpg" alt="">
+    <img src="../images/lazyload-3.jpg" alt="">
+</div>
+
+<body>
+
+</body>
+
+</html>
