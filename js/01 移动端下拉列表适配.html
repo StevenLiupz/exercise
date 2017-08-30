@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端下拉列表适配</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 14px;
+            list-style: none;
+            ;
+        }
+        
+        body {
+            height: 500px;
+        }
+        
+        .selectBox {
+            width: 100%;
+            min-height: 34px;
+            height: 34px;
+            padding: 10px 15px;
+        }
+        
+        .selectBox input {}
+        
+        .selectBox .selectDiv {
+            width: 100%;
+        }
+        
+        .selectBox .selectDiv ul {
+            position: relative;
+        }
+        
+        .selectBox>div cite,
+        .selectBox>div ul li {
+            width: 100%;
+            display: block;
+            padding: 6px 8px;
+            color: #555555;
+            line-height: 30px;
+            background: white;
+            border: 1px solid #cccccc;
+            position: relative;
+        }
+        
+        .selectBox>div cite {
+            border-radius: 4px;
+        }
+        
+        .selectBox>div cite::before {
+            content: "";
+            position: absolute;
+            top: 17px;
+            right: 12px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid #cccccc;
+        }
+        
+        .selectBox>div {
+            width: 100%;
+            background: white;
+        }
+        
+        .selectBox>div ul li {
+            border-top: none;
+        }
+        
+        .selectBox>div ul li.selectLi {
+            background: #006eb9;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="selectBox">
+        <input id="course" name="course" type="hidden" value="--请选择--" />
+        <div id="courseBox">
+            <cite id="courseCite">--请选择--</cite>
+            <ul style="display: none;">
+                <li data-input-value="html">html</li>
+                <li data-input-value="css">css</li>
+                <li data-input-value="js">js</li>
+            </ul>
+        </div>
+    </div>
+    <div style="width: 100%; height: 200px;"></div>
+    <div class="selectBox">
+        <input id="sports" name="sports" type="hidden" value="--请选择--" />
+        <div id="sportsBox">
+            <cite id="sportsCite">--请选择--</cite>
+            <ul style="display: none;">
+                <li data-input-value="basekeybool">basekeybool</li>
+                <li data-input-value="footbool">footbool</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    jQuery.selectDiv = function(boxId, inputId, bool) {
+        var selectInput = $(inputId);
+        var selectCite = $(boxId + " cite");
+        // 下拉列表的显示与隐藏
+        selectCite.on("tap click", function() {
+            var $ul = $(this).next("ul");
+            if ($ul.css("display") == "none") {
+                $ul.show();
+            } else {
+                $ul.hide();
+            }
+        });
+        // 选择框选中后对input的赋值
+        $(boxId + " ul li").on("tap click", function() {
+            selectCite.html($(this).text());
+            selectInput.val($(this).data("inputValue"));
+            $(this).parent().hide(); // 隐藏ul列表
+            $(boxId + " ul li").each(function() {
+                $(this).removeClass("selectLi");
+            });
+            $(this).addClass("selectLi");
+        });
+        // 点击任意处弹窗关闭
+        $("body").on("tap click", function(e) {
+            if (e.target.id != selectCite.eq(0).attr("id")) {
+                if ($(boxId + " ul").css("display") == "block") {
+                    $(boxId + " ul").hide();
+                }
+            }
+        });
+        // 默认自动获取第一个值
+        if (typeof(bool) === "boolean" && bool) {
+            selectCite.html($(boxId + " ul li").eq(0).text());
+            selectInput.val($(boxId + " ul li").eq(0).data("inputValue"));
+            $(boxId + " ul li").eq(0).addClass("selectLi");
+        }
+    };
+    $.selectDiv("#courseBox", "#course", true);
+    $.selectDiv("#sportsBox", "#sports");
+</script>
