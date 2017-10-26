@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>js实现复制功能</title>
+	<script type="text/javascript" src="../lib/clipboard.min.js"></script>
+	<script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		.box {
+			width: 600px;
+			margin: 60px auto 10px;
+			position: relative;
+			background: #f7f7f9;
+			padding: 10px 20px;
+			border: 1px solid #elele8;
+			border-radius: 0 4px;
+		}
+		.box .remind-box {
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: 10;
+		}
+		.box .remind-box .remind-text {
+			width: 104px;
+			font-size: 12px;
+			padding: 4px 6px;
+			background: #000;
+			color: #fff;
+			border-radius: 5px;
+			position: absolute;
+			top: -32px;
+			right: -36px; 
+			display: none;
+		}
+		.box .remind-box .remind-text::after {
+			content: "";
+			position: absolute;
+			bottom: -4px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 0;
+			height: 0;
+			border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            border-top: 4px solid #000;
+		} 
+		.box .remind-box .btn {
+			padding: 5px 8px;
+			color: #767676;
+			background: #fff;
+			font-size: 12px;
+			border: 1px solid #elele8;
+			border-radius: 0 4px; 
+			cursor: pointer;
+		}
+		.box .btn.active {
+			color: #fff;
+			background: #563d7c;
+			border-color: #563d7c;
+		}
+		.box .text {
+			font-size: 13px;
+		}
+		.box .text pre {
+			display: block;
+			word-wrap: break-word;
+			word-break: normal;
+			padding: 0;
+			margin: 0;
+		}
+		.box .text pre code {
+			font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+			white-space: pre-wrap;
+		}
+		.nt {
+			color: #2f6f9f;
+		}
+		.ng {
+			color: #4f9fcf;
+		}
+		.nc {
+			color: #d44950;
+		} 
+	</style>
+</head>	
+<body>
+	<div class="box">
+		<div class="remind-box">
+			<div class="remind-text">Copy to clipboard</div>
+			<span class="btn" data-clipboard-target="#text">Copy</span>
+		</div> 
+		<div id="text" class="text"><figure><pre><code data-lang="html"><span class="nt">&lt;ul</span><span class="ng"> class=</span><span class="nc">"pager"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li</span><span class="ng"> class=</span><span class="nc">"next"</span><span class="nt">&gt;</span><span class="nt">&lt;a</span><span class="ng"> href=</span><span class="nc">"https://www.baidu.com/"</span><span class="nt">&gt;</span>Older<span class="nt">&lt;/a&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span><span class="ng"> class=</span><span class="nc">"next"</span><span class="nt">&gt;</span><span class="nt">&lt;a</span><span class="ng"> href=</span><span class="nc">"https://www.baidu.com/"</span><span class="nt">&gt;</span>younger<span class="nt">&lt;/a&gt;</span><span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;ul&gt;</span></code></pre></figure>
+		</div> 
+	</div> 
+</body> 	
+<script type="text/javascript">
+	new Clipboard(".btn");
+	$(function(){ 
+		$(".btn").hover(function(){
+			$(this).addClass("active");
+			$(this).prev().fadeIn(); 
+		},function(){
+			$(this).removeClass("active");
+			$(this).prev().fadeOut(); 
+		},200)
+	})
+</script>
+</html>
