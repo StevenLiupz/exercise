@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>组件库功能-下拉显示代码</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.page-content {
+			width: 100%;
+		}
+		.content {
+			padding-top: 50px;
+		}
+		.page-content h2 {
+			font-size: 28px;
+		}
+		.page-content h3 {
+			font-size: 22px;
+		}
+		.page-content h2, .page-content h3 {
+			color: #1f2f3d;
+			font-weight: 400;
+		}
+		.page-content .content > h3 {
+			margin: 55px 0 20px;
+		}
+		.page-content p {
+			font-size: 14px;
+			color: #5e6d82;
+			line-height: 1.5em;
+			margin: 14px 0;
+		}
+		.demo-block {
+			border: 1px solid #ebebeb;
+			border-radius: 3px;
+		}
+		.source {
+			padding: 24px;
+		}
+		.ry-radio {
+			color: #5e5e66;
+			font-size: 14px;
+			font-weight: 500;
+			cursor: pointer;
+			display: inline-block;
+			outline: none;
+			white-space: nowrap;
+			position: relative;
+		}
+		.ry-radio_input {
+			white-space: nowrap;
+			outline: none;
+			display: inline-block;
+			cursor: pointer;
+			vertical-align: middle;
+			position: relative;
+		}
+		.ry-radio_inner {
+			width: 14px;
+			height: 14px;
+			border: 1px solid #d8dce5;
+			border-radius: 100%;
+			box-sizing: border-box;
+			display: inline-block;
+			cursor: pointer;
+			position: relative;
+		}
+		.ry-radio_inner:hover {
+			border-color: #409eff;
+		}
+		.ry-radio_inner::after {
+			content: "";
+			width: 4px;
+			height: 4px; 
+			background: #fff;
+			border-radius: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			transition: transform .15s ease-in;
+		}
+		.ry-radio_inner.checked {
+			border-color: #409eff;
+			background: #409eff;
+		}
+		.ry-radio_original {
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+		.ry-radio_text {
+			font-size: 14px;
+			padding-left: 10px;
+		}
+		.ry-radio_inner.checked+.ry-radio_text {
+			color: #409eff;
+		}
+		.ry-radio+.ry-radio {
+			margin-left: 30px;
+		}
+
+		.meta {
+			background: #fafafa;
+			borter-top: 1px solid #eaeefb;
+			overflow: hidden;
+		} 
+		.demo-block-control {
+			position: relative;
+			border-top: 1px solid #eaeefb;
+			height: 44px;
+			box-sizing: border-box;
+			background: #fff;
+			border-radius: 0px 0px 4px 4px;
+			text-align: center;
+			cursor: pointer;
+			color: #d3dce6;
+			font-size: 14px;
+			line-height: 44px;
+		} 
+		.ry-triangle {
+			width: 10px;
+			height: 10px; 
+			position: relative;
+		}
+		.ry-triangle::after {
+			content: "";
+			width: 0;
+			height: 0;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-5px);
+		}
+		.ry-triangle-bottom.ry-triangle::after { 
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-top: 10px solid #d3dce6;
+		}
+		.demo-block-control>i {
+			top: 17px; 
+			transition: margin-left 0.2s;
+		}
+		.demo-block-control span {
+			display: none;
+			margin-left: 
+		}
+		.demo-block-control.is-fixed {
+			color: #409eff;
+		}
+		.demo-block-control.is-fixed .ry-triangle-bottom {
+			border-top: 10px solid #409eff;
+			margin-left: -45px;
+		}
+		.demo-block-control.is-fixed span {
+			display: inline-block;
+			transition: margin-left 0.2s;
+		}
+	</style>
+</head>
+<body>
+	<div class="page-content" id="page-content">
+		<section class="content">
+			<h2>Radio 单选框</h2>
+			<p>在一组备选项中进行单选</p>
+			<h3>基础用法</h3>
+			<p>由于选项默认可见，不宜过多，若选项过多，建议使用select选择器</p>
+			<div class="demo-block">
+				<div class="source">
+					<label class="ry-radio">
+						<span class="ry-radio_input">
+							<span class="ry-radio_inner checked"></span>
+							<input type="radio" name="radio" value="1" class="ry-radio_original" id="radio1">
+						</span>
+						<span class="ry-radio_text">备选项1</span>
+					</label>
+					<label class="ry-radio">
+						<span class="ry-radio_input">
+							<span class="ry-radio_inner"></span>
+							<input type="radio" name="radio" value="2" class="ry-radio_original" id="radio2">
+						</span>
+						<span class="ry-radio_text">备选项2</span>
+					</label>
+				</div>
+				<div class="meta">
+					
+				</div>
+				<div class="demo-block-control"> 
+					<i class="ry-triangle ry-triangle-bottom"></i>		
+					<span>显示代码</span>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function(){ 
+			$(".ry-radio").click(function(){
+				$(".ry-radio").each(function(index){
+					let $radio_inner = $(this).find(".ry-radio_inner");
+					if($radio_inner.hasClass("checked")){
+						$radio_inner.removeClass("checked");
+					}
+				})
+				$(this).find(".ry-radio_inner").addClass("checked");
+			})
+			$(".demo-block-control").hover(function(){
+				$(this).addClass("is-fixed");
+			},function(){
+				$(this).removeClass("is-fixed");
+			})
+		})
+	</script>
+</body>
+</html>
