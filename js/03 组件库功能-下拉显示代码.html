@@ -147,18 +147,37 @@
 		}
 		.demo-block-control span {
 			display: none;
-			margin-left: 
+			margin-left: 73px;
+		} 
+		/*鼠标移入时的动画*/
+		.demo-block.is-hover .demo-block-control span {
+			margin-left: 12px;
 		}
-		.demo-block-control.is-fixed {
+		.demo-block.is-hover .ry-triangle-bottom { 
+			margin-left: -36px;
+		}
+		.demo-block.is-hover .demo-block-control span {
+			display: inline-block;
+			transition: margin-left 0.4s;
+		}
+		/*鼠标移入时的样式*/
+		.demo-block-control.hoverColor {
+			background: #f9fafc;
 			color: #409eff;
 		}
-		.demo-block-control.is-fixed .ry-triangle-bottom {
+		.demo-block-control.hoverColor .ry-triangle-bottom::after {
 			border-top: 10px solid #409eff;
-			margin-left: -45px;
+		}  
+		/*鼠标点击时的样式*/
+		.demo-block-control.is-fixed .ry-triangle-bottom::after {
+			border-bottom: 10px solid #d3dce6;
+			border-top: 0px;
 		}
-		.demo-block-control.is-fixed span {
-			display: inline-block;
-			transition: margin-left 0.2s;
+		.meta {
+			height: 0px;
+		}
+		.meta.is-block {
+			height: auto;
 		}
 	</style>
 </head>
@@ -187,7 +206,8 @@
 					</label>
 				</div>
 				<div class="meta">
-					
+					<p>sdaaksdajksdjklasjkdlajklsdjkadjk</p>
+					<p>123333333</p>
 				</div>
 				<div class="demo-block-control"> 
 					<i class="ry-triangle ry-triangle-bottom"></i>		
@@ -209,10 +229,28 @@
 				})
 				$(this).find(".ry-radio_inner").addClass("checked");
 			})
-			$(".demo-block-control").hover(function(){
-				$(this).addClass("is-fixed");
+			// bug: 当鼠标频繁的移入移出时会有闪现问题
+			$(".demo-block").hover(function(){
+				$(this).addClass("is-hover"); 
 			},function(){
-				$(this).removeClass("is-fixed");
+				$(this).removeClass("is-hover"); 
+			})
+			$(".demo-block-control").hover(function(){
+				$(this).addClass("hoverColor");
+			},function(){
+				$(this).removeClass("hoverColor");
+			})
+			$(".demo-block-control").click(function(){
+				$(this).removeClass("hoverColor");
+				if($(this).hasClass("is-fixed")){ 
+					$(this).removeClass("is-fixed");
+					$(this).find("span").text("显示代码");
+					$(this).prev(".meta").removeClass("is-block");
+				}else{ 
+					$(this).addClass("is-fixed");
+					$(this).find("span").text("隐藏代码");
+					$(this).prev(".meta").addClass("is-block");
+				}
 			})
 		})
 	</script>
