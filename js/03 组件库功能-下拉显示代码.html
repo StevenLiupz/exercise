@@ -3,226 +3,108 @@
 <head>
 	<meta charset="UTF-8">
 	<title>组件库功能-下拉显示代码</title>
-	<style type="text/css">
-		* {
-			margin: 0;
-			padding: 0;
-		}
-		.page-content {
-			width: 100%;
-		}
-		.content {
-			padding-top: 50px;
-		}
-		.page-content h2 {
-			font-size: 28px;
-		}
-		.page-content h3 {
-			font-size: 22px;
-		}
-		.page-content h2, .page-content h3 {
-			color: #1f2f3d;
-			font-weight: 400;
-		}
-		.page-content .content > h3 {
-			margin: 55px 0 20px;
-		}
-		.page-content p {
-			font-size: 14px;
-			color: #5e6d82;
-			line-height: 1.5em;
-			margin: 14px 0;
-		}
-		.demo-block {
-			border: 1px solid #ebebeb;
-			border-radius: 3px;
-		}
-		.source {
-			padding: 24px;
-		}
-		.ry-radio {
-			color: #5e5e66;
-			font-size: 14px;
-			font-weight: 500;
-			cursor: pointer;
-			display: inline-block;
-			outline: none;
-			white-space: nowrap;
-			position: relative;
-		}
-		.ry-radio_input {
-			white-space: nowrap;
-			outline: none;
-			display: inline-block;
-			cursor: pointer;
-			vertical-align: middle;
-			position: relative;
-		}
-		.ry-radio_inner {
-			width: 14px;
-			height: 14px;
-			border: 1px solid #d8dce5;
-			border-radius: 100%;
-			box-sizing: border-box;
-			display: inline-block;
-			cursor: pointer;
-			position: relative;
-		}
-		.ry-radio_inner:hover {
-			border-color: #409eff;
-		}
-		.ry-radio_inner::after {
-			content: "";
-			width: 4px;
-			height: 4px; 
-			background: #fff;
-			border-radius: 100%;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%,-50%);
-			transition: transform .15s ease-in;
-		}
-		.ry-radio_inner.checked {
-			border-color: #409eff;
-			background: #409eff;
-		}
-		.ry-radio_original {
-			opacity: 0;
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: -1;
-		}
-		.ry-radio_text {
-			font-size: 14px;
-			padding-left: 10px;
-		}
-		.ry-radio_inner.checked+.ry-radio_text {
-			color: #409eff;
-		}
-		.ry-radio+.ry-radio {
-			margin-left: 30px;
-		}
-
-		.meta {
-			background: #fafafa;
-			borter-top: 1px solid #eaeefb;
-			overflow: hidden;
-		} 
-		.demo-block-control {
-			position: relative;
-			border-top: 1px solid #eaeefb;
-			height: 44px;
-			box-sizing: border-box;
-			background: #fff;
-			border-radius: 0px 0px 4px 4px;
-			text-align: center;
-			cursor: pointer;
-			color: #d3dce6;
-			font-size: 14px;
-			line-height: 44px;
-		} 
-		.ry-triangle {
-			width: 10px;
-			height: 10px; 
-			position: relative;
-		}
-		.ry-triangle::after {
-			content: "";
-			width: 0;
-			height: 0;
-			position: absolute;
-			left: 50%;
-			transform: translateX(-5px);
-		}
-		.ry-triangle-bottom.ry-triangle::after { 
-			border-left: 5px solid transparent;
-			border-right: 5px solid transparent;
-			border-top: 10px solid #d3dce6;
-		}
-		.demo-block-control>i {
-			top: 17px; 
-			transition: margin-left 0.2s;
-		}
-		.demo-block-control span {
-			display: none;
-			margin-left: 73px;
-		} 
-		/*鼠标移入时的动画*/
-		.demo-block.is-hover .demo-block-control span {
-			margin-left: 12px;
-		}
-		.demo-block.is-hover .ry-triangle-bottom { 
-			margin-left: -36px;
-		}
-		.demo-block.is-hover .demo-block-control span {
-			display: inline-block;
-			transition: margin-left 0.4s;
-		}
-		/*鼠标移入时的样式*/
-		.demo-block-control.hoverColor {
-			background: #f9fafc;
-			color: #409eff;
-		}
-		.demo-block-control.hoverColor .ry-triangle-bottom::after {
-			border-top: 10px solid #409eff;
-		}  
-		/*鼠标点击时的样式*/
-		.demo-block-control.is-fixed .ry-triangle-bottom::after {
-			border-bottom: 10px solid #d3dce6;
-			border-top: 0px;
-		}
-		.demo-block-control.is-fixed.hoverColor .ry-triangle-bottom::after {
-			border-bottom: 10px solid #409eff;
-		}
-		.meta {
-			height: 0px;
-		}
-		.meta.is-block {
-			height: auto;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="../css/ry-element.css">
 </head>
 <body>
-	<div class="page-content" id="page-content">
-		<section class="content">
-			<h2>Radio 单选框</h2>
-			<p>在一组备选项中进行单选</p>
-			<h3>基础用法</h3>
-			<p>由于选项默认可见，不宜过多，若选项过多，建议使用select选择器</p>
-			<div class="demo-block">
-				<div class="source">
-					<label class="ry-radio">
-						<span class="ry-radio_input">
-							<span class="ry-radio_inner checked"></span>
-							<input type="radio" name="radio" value="1" class="ry-radio_original" id="radio1">
-						</span>
-						<span class="ry-radio_text">备选项1</span>
-					</label>
-					<label class="ry-radio">
-						<span class="ry-radio_input">
-							<span class="ry-radio_inner"></span>
-							<input type="radio" name="radio" value="2" class="ry-radio_original" id="radio2">
-						</span>
-						<span class="ry-radio_text">备选项2</span>
-					</label>
+	<header class="header">
+		<div class="container">
+			<h1 class="fl"><a href="#"><img src="../images/elm.jpg"></a></h1>
+			<ul class="nav fr">
+				<li><a href="#">指南</a></li>
+				<li><a href="#" class="active">组件</a></li>
+				<li><a href="#">资源</a></li>
+			</ul>
+		</div>
+	</header>
+	<div class="main"> 
+		<div class="page-component">
+			<div class="page-container">
+				<div class="page-list">
+					<div class="page-list-wrap">
+						<div class="page-list-view">
+							<div class="side-nav">
+								<ul>
+									<li class="nav-item"><a href="#">更新日志</a></li>
+									<li class="nav-item"><a href="#">Element React</a></li>
+									<li class="nav-item"><a href="#">Element Angular</a></li>
+									<li class="nav-item">
+										<a href="#">开发指南</a>
+										<ul>
+											<li class="nav-child-item"><a href="#">安装</a></li>
+											<li class="nav-child-item"><a href="#">快速上手</a></li>
+											<li class="nav-child-item"><a href="#">国际化</a></li>
+											<li class="nav-child-item"><a href="#">自定义主题</a></li>
+											<li class="nav-child-item"><a href="#">内置过渡动画</a></li>
+										</ul>
+									</li>
+									<li class="nav-item">
+										<a href="#/basic">组件</a>
+										<div class="nav-group">
+											<div class="nav-group_tittle">Basic</div>
+											<ul class="nav-group_list">
+												<li class="nav-child-item"><a href="#">Layout布局</a></li>
+												<li class="nav-child-item"><a href="#">Container布局容器</a></li>
+												<li class="nav-child-item"><a href="#">Color色彩</a></li>
+												<li class="nav-child-item"><a href="#">Icon图标</a></li>
+												<li class="nav-child-item"><a href="#">Button按钮</a></li>	
+												<li class="nav-child-item"><a href="#">input交互</a></li>	
+											</ul>
+										</div>
+									</li> 
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="meta">
-					<p>sdaaksdajksdjklasjkdlajklsdjkadjk</p>
-					<p>123333333</p>
-				</div>
-				<div class="demo-block-control"> 
-					<i class="ry-triangle ry-triangle-bottom"></i>		
-					<span>显示代码</span>
+				<div class="page-content" id="page-content">
+					<section class="content">
+						<h2>Radio 单选框</h2>
+						<p>在一组备选项中进行单选</p>
+						<h3>基础用法</h3>
+						<p>由于选项默认可见，不宜过多，若选项过多，建议使用select选择器</p>
+						<div class="demo-block">
+							<div class="source">
+								<label class="ry-radio">
+									<span class="ry-radio_input">
+										<span class="ry-radio_inner checked"></span>
+										<input type="radio" name="radio" value="1" class="ry-radio_original" id="radio1">
+									</span>
+									<span class="ry-radio_text">备选项1</span>
+								</label>
+								<label class="ry-radio">
+									<span class="ry-radio_input">
+										<span class="ry-radio_inner"></span>
+										<input type="radio" name="radio" value="2" class="ry-radio_original" id="radio2">
+									</span>
+									<span class="ry-radio_text">备选项2</span>
+								</label>
+							</div>
+							<div class="meta">
+								<div class="descript">
+									<p>要使用Radio組件，只需要設置<code>v-model</code>綁定變量，選中意味著變量的值為相應<code>label</code>屬性的值，<code>label</code>可以是<code>String</code>、<code>Number</code>或<code>Boolean</code>。</p>
+								</div>  
+								<div class="highlight"><figure><pre><code data-lang="html"><span class="nt">&lt;ul</span><span class="ng"> class=</span><span class="nc">"pager"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;li</span><span class="ng"> class=</span><span class="nc">"next"</span><span class="nt">&gt;</span><span class="nt">&lt;a</span><span class="ng"> href=</span><span class="nc">"https://www.baidu.com/"</span><span class="nt">&gt;</span>Older<span class="nt">&lt;/a&gt;</span><span class="nt">&lt;/li&gt;</span>
+		<span class="nt">&lt;li</span><span class="ng"> class=</span><span class="nc">"next"</span><span class="nt">&gt;</span><span class="nt">&lt;a</span><span class="ng"> href=</span><span class="nc">"https://www.baidu.com/"</span><span class="nt">&gt;</span>younger<span class="nt">&lt;/a&gt;</span><span class="nt">&lt;/li&gt;</span>
+		<span class="nt">&lt;ul&gt;</span></code></pre></figure>
+								</div>
+							</div>
+							<div class="demo-block-control"> 
+								<i class="ry-triangle ry-triangle-bottom"></i>		
+								<span>显示代码</span>
+							</div>
+						</div>
+					</section>
 				</div>
 			</div>
-		</section>
+		</div>
+		<div class="page-component-top" id="page-component-top"></div>
 	</div>
 
 	<script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
 	<script type="text/javascript">
 		$(function(){ 
+			// 单选按钮的选中效果
 			$(".ry-radio").click(function(){
 				$(".ry-radio").each(function(index){
 					let $radio_inner = $(this).find(".ry-radio_inner");
@@ -253,6 +135,15 @@
 					$(this).addClass("is-fixed");
 					$(this).find("span").text("隐藏代码");
 					$(this).prev(".meta").addClass("is-block");
+				}
+			})
+			// 返回顶部按钮效果
+			$(window).scroll(function(){
+				let $top = $(window).scrollTop(); 
+				if ($top > 150) {
+					$("#page-component-top").fadeIn(); 
+				}else{
+					$("#page-component-top").fadeOut();
 				}
 			})
 		})
