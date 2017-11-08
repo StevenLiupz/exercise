@@ -114,11 +114,11 @@
 			// 复制代码功能
 			new Clipboard(".copy-btn");
 			$(".copy-btn").hover(function(){
-				$(this).addClass("active");
-				$(this).prev().fadeIn(); 
+				$(this).addClass("active").prev().fadeIn();  
 			},function(){
-				$(this).removeClass("active");
-				$(this).prev().fadeOut(); 
+				$(this).removeClass("active").prev().fadeOut(function(){
+					$(this).text("Copy to clipboard");
+				}); 
 			},200)
 			$(".copy-btn").click(function(){
 				$(this).prev().text("copied!");
@@ -132,8 +132,8 @@
 					}
 				})
 				$(this).find(".ry-radio_inner").addClass("checked");
-			})
-			// bug: 当鼠标频繁的移入移出时会有闪现问题
+			}) 
+			// 鼠标移入带啊区域的动画效果
 			$(".demo-block").hover(function(){
 				$(this).addClass("is-hover"); 
 			},function(){
@@ -147,13 +147,10 @@
 			$(".demo-block-control").click(function(){
 				$(this).removeClass("hoverColor");
 				if($(this).hasClass("is-fixed")){ 
-					$(this).removeClass("is-fixed");
-					$(this).find("span").text("显示代码"); 
-					$(this).prev(".meta").slideUp("fast");
+					$(this).removeClass("is-fixed").find("span").text("显示代码").end().prev(".meta").slideUp(100);
+					$(".demo-block").removeClass("is-hover"); 
 				}else{ 
-					$(this).addClass("is-fixed");
-					$(this).find("span").text("隐藏代码"); 
-					$(this).prev(".meta").slideDown("fast");
+					$(this).addClass("is-fixed").find("span").text("隐藏代码").end().prev(".meta").slideDown(100);
 				}
 			})
 			// 返回顶部按钮效果

@@ -311,14 +311,14 @@ a {
 }
 .meta { 
 	display: none;
+	padding: 10px;
 	background: #fafafa; 
 }
 .meta.is-block {
 	height: auto;
 }
 .meta .descript {
-	padding: 20px;
-	margin: 10px;
+	padding: 20px; 
 	border: 1px solid #ebebeb;
 	border-radius: 3px;
 	font-size: 14px;
@@ -343,8 +343,8 @@ a {
 } 
 /*copy*/
 .meta .highlight { 
-	padding: 20px;
-	margin: 10px;
+	padding: 20px; 
+	margin-top: 10px;
 	background: #fff;
 	border: 1px solid #ebebeb; 
 	position: relative; 
@@ -389,7 +389,8 @@ a {
 	border-radius: 5px;
 	position: absolute;
 	top: -32px;
-	right: -36px; 
+	left: 50%; 
+	transform: translateX(-50%);
 	user-select: none; /*禁止文本被选中*/
 	white-space: nowrap;
 	display: none;
