@@ -9,6 +9,10 @@ li {
 a {
 	text-decoration: none;
 }
+/*设置文本选中时的背景颜色*/
+::selection {
+	background: transparent;
+}
 .fl {
 	float: left;
 }
@@ -239,12 +243,6 @@ a {
 .ry-radio+.ry-radio {
 	margin-left: 30px;
 }
-
-.meta {
-	background: #fafafa;
-	borter-top: 1px solid #eaeefb;
-	overflow: hidden;
-} 
 .demo-block-control {
 	position: relative;
 	border-top: 1px solid #eaeefb;
@@ -311,8 +309,9 @@ a {
 .demo-block-control.is-fixed.hoverColor .ry-triangle-bottom::after {
 	border-bottom: 10px solid #409eff;
 }
-.meta {
-	height: 0px;
+.meta { 
+	display: none;
+	background: #fafafa; 
 }
 .meta.is-block {
 	height: auto;
@@ -341,20 +340,28 @@ a {
 	font-size: 12px;
 	border-radius: 3px;
 	line-height: 18px;
-}
-.meta .highlight pre {
+} 
+/*copy*/
+.meta .highlight { 
+	padding: 20px;
+	margin: 10px;
+	background: #fff;
+	border: 1px solid #ebebeb; 
+	position: relative; 
+}  
+.meta .highlight .code pre {
 	display: block;
 	word-wrap: break-word;
 	word-break: normal;
 	padding: 0;
 	margin: 0;
 }
-.meta .highlight figure {
+.meta .highlight .code figure {
 	padding: 18px 24px;
 	font-size: 12px;
 	line-height: 1.8em;
 }
-.meta .highlight pre code {
+.meta .highlight .code pre code {
 	font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
 	white-space: pre-wrap;
 }
@@ -366,7 +373,55 @@ a {
 }
 .nc {
 	color: #d44950;
+}
+.highlight .copy-box { 
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 10;
+}
+.highlight .copy-box .copy-text {
+	/*width: 104px;*/
+	font-size: 12px;
+	padding: 4px 6px;
+	background: #000;
+	color: #fff;
+	border-radius: 5px;
+	position: absolute;
+	top: -32px;
+	right: -36px; 
+	user-select: none; /*禁止文本被选中*/
+	white-space: nowrap;
+	display: none;
+}
+.highlight .copy-box .copy-text::after {
+	content: "";
+	position: absolute;
+	bottom: -4px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 0;
+	height: 0;
+	border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid #000;
 } 
+.highlight .copy-box .copy-btn {
+	display: block;
+	padding: 5px 8px;
+	color: #767676; 
+	font-size: 12px; 
+	border-left: 1px solid #ebebeb;
+	border-bottom: 1px solid #ebebeb;
+	border-radius: 0 4px; 
+	user-select: none;
+	cursor: pointer;
+}
+.highlight .copy-box .copy-btn.active {
+	color: #fff;
+	background: #563d7c;
+	border-color: #563d7c;
+}
 /*返回顶部按钮*/
 .page-component-top {
 	width: 40px;
