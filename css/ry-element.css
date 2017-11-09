@@ -34,6 +34,8 @@ a {
 .header {
 	height: 80px;
 	width: 100%;	
+	min-width: 320px;
+	background: #fff;
 	line-height: 80px;
 	position: fixed;
 	top: 0;
@@ -41,8 +43,11 @@ a {
 	z-index: 999;
 }
 .header .container {
-	width: 1200px;
+	width: 100%;
+	max-width: 1200px;
 	margin: 0 auto;
+	padding: 0 16px;
+	box-sizing: border-box;
 } 
 .header .container h1 {
 	height: 80px; 
@@ -52,6 +57,12 @@ a {
 	box-sizing: border-box;
 	height: 80px; 
 }
+.container .logo {
+		display: inline-block;
+	}
+	.container .logo_m {
+		display: none;
+	}
 .header .container a img {
 	vertical-align: middle; /*如果不设置该属性，img会存在留白问题*/
 }
@@ -83,16 +94,19 @@ a {
 	position: relative;
 }
 .page-component {
+	width: 100%;
 	position: relative;
 	margin-top: 80px;
 }
 .page-container {
-	width: 1200px;
+	width: 100%;
+	max-width: 1200px;
+	padding: 0 16px;
 	box-sizing: border-box;
 	margin: 0 auto; 
 }
 /*side*/
-.page-list { 
+.page-container .page-list { 
 	width: 240px;
 	position: fixed;
 	top: 0;
@@ -109,8 +123,7 @@ a {
 	height: 100%; 
 	padding-bottom: 50px;
 }
-.page-list-view .side-nav > ul {
-	padding-bottom: 50px;
+.page-list-view .side-nav > ul { 
 	overflow: hidden;
 }
 .page-list-view .side-nav > ul li {
@@ -356,8 +369,7 @@ a {
 	padding: 0;
 	margin: 0;
 }
-.meta .highlight .code figure {
-	padding: 18px 24px;
+.meta .highlight .code figure { 
 	font-size: 12px;
 	line-height: 1.8em;
 }
@@ -447,4 +459,24 @@ a {
 	top: 50%;
 	left: 50%;
 	transform: translate(-5px,-4px);
+}
+
+/*响应式样式*/
+@media screen and (max-width: 860px) {
+	.container .logo {
+		display: none;
+	}
+	.container .logo_m {
+		display: inline-block;
+	}
+	.page-container .page-list {
+		position: static;
+	}
+	.page-content {
+		padding-left: 16px;		
+	}
+	.page-component-top {
+		right: 30px;
+		bottom: 30px;
+	}
 }
