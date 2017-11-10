@@ -28,7 +28,7 @@
 			<div class="page-container">
 				<div class="page-list">
 					<div class="page-list-wrap">
-						<div class="page-list-view">
+						<div class="page-list-view" id="page-list-view">
 							<div class="side-nav">
 								<ul>
 									<li class="nav-item"><a href="#">字体图标</a></li>  
@@ -65,6 +65,9 @@
 								</ul>
 							</div>
 						</div>
+					</div>
+					<div class="scrollBar">
+						<div class="scrollBar_thumb" id="side_scrollBar"></div>
 					</div>
 				</div>
 				<div class="page-content" id="page-content">
@@ -120,8 +123,11 @@
 
 	<script type="text/javascript" src="../lib/clipboard.min.js"></script>
 	<script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="../lib/scrollBar.js"></script>
 	<script type="text/javascript">
 		$(function(){ 
+			// 初始化滚动条高度
+			$("#side_scrollBar").height(setScrollHeight("#page-list-view"));
 			// 复制代码功能
 			new Clipboard(".copy-btn");
 			$(".copy-btn").hover(function(){
@@ -163,6 +169,10 @@
 				}else{ 
 					$(this).addClass("is-fixed").find("span").text("隐藏代码").end().prev(".meta").slideDown(100);
 				}
+			})
+			// 浏览器窗口变化时计算滚动条的宽高
+			$(window).resize(function(){
+				$("#side_scrollBar").height(setScrollHeight("#page-list-view"));
 			})
 			// 返回顶部按钮效果
 			$(window).scroll(function(){
