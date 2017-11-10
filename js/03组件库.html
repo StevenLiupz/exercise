@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA Compatible" content="IE=edge">
 	<title>组件库</title>
 	<link rel="shortcut icon" href="../images/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="../css/ry-element.css">
+	<link rel="stylesheet" type="text/css" href="../css/ry_element.css">
+	<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css">
 </head>
 <body>
 	<header class="header">
@@ -110,7 +112,7 @@
 								</div> 
 							</div>
 							<div class="demo-block-control"> 
-								<i class="ry-triangle ry-triangle-bottom"></i>		
+								<i class="iconfont icon-moreunfold"></i>		
 								<span>显示代码</span>
 							</div>
 						</div>
@@ -122,7 +124,7 @@
 	</div>
 
 	<script type="text/javascript" src="../lib/clipboard.min.js"></script>
-	<script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="../lib/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="../lib/scrollBar.js"></script>
 	<script type="text/javascript">
 		$(function(){ 
@@ -143,18 +145,18 @@
 			// 单选按钮的选中效果
 			$(".ry-radio").click(function(){
 				$(".ry-radio").each(function(index){
-					let $radio_inner = $(this).find(".ry-radio_inner");
+					var $radio_inner = $(this).find(".ry-radio_inner");
 					if($radio_inner.hasClass("checked")){
 						$radio_inner.removeClass("checked");
 					}
 				})
 				$(this).find(".ry-radio_inner").addClass("checked");
 			}) 
-			// 鼠标移入带啊区域的动画效果
+			// 鼠标移入代码区域的动画效果
 			$(".demo-block").hover(function(){
-				$(this).addClass("is-hover"); 
+				$(this).addClass("is-hover");  
 			},function(){
-				$(this).removeClass("is-hover"); 
+				$(this).removeClass("is-hover");  
 			})
 			$(".demo-block-control").hover(function(){
 				$(this).addClass("hoverColor");
@@ -176,7 +178,7 @@
 			})
 			// 返回顶部按钮效果
 			$(window).scroll(function(){
-				let $top = $(window).scrollTop(); 
+				var $top = $(window).scrollTop(); 
 				if ($top > 150) {
 					$("#page-component-top").fadeIn(); 
 				}else{
