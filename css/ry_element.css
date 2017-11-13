@@ -273,40 +273,48 @@ a {
   background: #fff;
   border-radius: 0px 0px 4px 4px;
   text-align: center;
-  cursor: pointer;
-  color: #d3dce6;
-  font-size: 14px;
+  cursor: pointer;  
   line-height: 44px;
 }  
-.demo-block .demo-block-control > i { 
-  font-weight: 500;
+.demo-block .demo-block-control p {
+  width: 86px;
+  height: 44px;
+  line-height: 44px;  
+  color: #d3dce6;
+  font-size: 14px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+.demo-block .demo-block-control p > i { 
+  font-weight: 600;
   display: inline-block;
   transition: transform 0.3s;
 }
-.demo-block .demo-block-control > span { 
+.demo-block .demo-block-control p > span {  
+  width: 66px;
+  text-align: center;
   position: absolute;
-  /*display: none;  */ 
-  -ms-transform: translateX(10px);  
-  transform: translate(10px);
-  transition: transform 0.3s;
-  visibility: hidden;
+  -ms-transform: translateX(32px);  
+  transform: translateX(32px);
+  transition: transform 0.3s; 
 } 
 /*鼠标移入时的动画*/
-.demo-block.is-hover .demo-block-control > i {
-  -ms-transform: translateX(-40px);
-  transform: translateX(-40px);
+.demo-block.is-hover .demo-block-control p > i {
+  -ms-transform: translateX(-36px);
+  transform: translateX(-36px);
 }  
-.demo-block.is-hover .demo-block-control > span {
-  /*display: inline-block;  */
-  visibility: visible;
-  -ms-transform: translateX(-30px);
-  transform: translateX(-30px);
-}
+.demo-block.is-hover .demo-block-control p > span { 
+  -ms-transform: translateX(-32px);
+  transform: translateX(-32px);
+} 
 /*鼠标移入时的样式*/
 .demo-block-control.hoverColor {
-  background: #f9fafc;
-  color: #409eff;
+  background: #f9fafc; 
 }  
+.demo-block-control.hoverColor p {
+  color: #409eff;
+}
 /*鼠标点击时的样式*/  
 .meta { 
   display: none;
@@ -430,8 +438,8 @@ a {
   cursor: pointer;
   box-shadow: 0 0 6px rgba(64,158,255,.52);
   position: fixed;
-  right: 100px;
-  bottom: 150px;
+  right: 60px;
+  bottom: 80px;
   display: none; 
 }  
 .page-component-top::after { 
