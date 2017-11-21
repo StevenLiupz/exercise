@@ -122,12 +122,14 @@ a {
   height: 100%; 
   overflow: scroll;
   overflow-x: auto;
+  position: relative;
   /*margin在这里作用是将块右移(下移)以隐藏默认的滚动条样式*/
-  margin-right: -17px; 
-  margin-bottom: -17px;
+  /*margin-right: -17px; 
+  margin-bottom: -17px;*/
 }
 .page-list-wrap .page-list-view {
-  position: relative;
+  width: 100%;
+  position: absolute;
 }
 .page-list-view .side-nav {
   height: 100%; 
@@ -469,7 +471,8 @@ a {
   height: 260px;
   border-radius: inherit;
   cursor: pointer;
-  background: hsla(220,8%,56%,.3)
+  background: hsla(220,8%,56%,.3);
+  display: none;
 }
 /*响应式样式*/
 @media screen and (max-width: 860px) {

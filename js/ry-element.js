@@ -1,6 +1,6 @@
 $(function(){ 
 	// 初始化滚动条高度
-	$("#side_scrollBar").height(setScrollHeight("#page-list-view"));
+	$("#side-scrollBar").height(setScrollHeight("#page-list-view"));
 	// 复制代码功能
 	new Clipboard(".copy-btn");
 	$(".copy-btn").hover(function(){
@@ -47,7 +47,7 @@ $(function(){
 	})
 	// 浏览器窗口变化时计算滚动条的宽高
 	$(window).resize(function(){
-		$("#side_scrollBar").height(setScrollHeight("#page-list-view"));
+		$("#side-escrollBar").height(setScrollHeight("#page-list-view"));
 	})
 	// 返回顶部按钮效果
 	$(window).scroll(function(){
