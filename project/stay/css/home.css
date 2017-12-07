@@ -1,0 +1,302 @@
+@charset "UTF-8";
+/*css初始化*/
+html, input, textarea {
+  font: normal 12px 'Century Gothic', 'Helvetica', 'Hiragino Sans GB W3', 'Microsoft YaHei', '微软雅黑', 'SimSun', '宋体', 'Heiti', '黑体', 'Arial', 'sans-serif';
+}
+
+body, button, ul, li, ol, p, dl, dd, h1, h2, h3, h4, h5, h6, img, iframe, form, input, textarea, td, section, article, aside, dl, dt, dd {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style-type: none;
+  font-weight: normal;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #50c8d7;
+  text-decoration: none;
+}
+
+i, em {
+  font-style: normal;
+  text-decoration: none;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+}
+
+.w1150 {
+  width: 1150px;
+  margin: 0px auto;
+}
+
+.w1124 {
+  width: 1124px;
+  margin: 0px auto;
+}
+
+/*浮动*/
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix::before, .clearfix::after {
+  content: '';
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+/*三角形*/
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+}
+
+/*css初始化完成*/
+/*顶部导航开始*/
+header {
+  width: 100%;
+  min-width: 1200px;
+  height: 52px;
+  background-color: #000;
+  position: relative;
+}
+header .nav {
+  width: 720px;
+  height: 52px;
+  margin-left: 50px;
+  position: relative;
+}
+header .nav .logo {
+  width: 135px;
+  height: 27px;
+  display: block;
+  background: url("../images/logo2.png") no-repeat;
+  position: absolute;
+  top: 13px;
+}
+header .nav ul {
+  position: relative;
+  margin-left: 165px;
+}
+header .nav ul li {
+  float: left;
+  font: normal 13px "微软雅黑";
+  position: relative;
+}
+header .nav ul li > a {
+  display: block;
+  padding: 25px 21px 10px;
+  color: #FFF;
+  text-shadow: 2px 2px 2px #010101;
+  position: relative;
+}
+header .nav ul li > a.active {
+  color: #50c8d7;
+}
+header .nav ul li > a .new {
+  position: absolute;
+  top: 20px;
+  right: -8px;
+  color: #ff5b54;
+  font-size: 9px;
+}
+header .nav ul li .nav-appDown {
+  width: 230px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+  position: absolute;
+  top: 75px;
+  left: -80px;
+}
+header .nav ul li .nav-appDown::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 20px;
+  border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+  _border-style: dashed dashed solid dashed;
+  position: absolute;
+  top: -40px;
+  left: 115px;
+}
+header .nav ul li .nav-appDown .nav-appText {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5b5b5b;
+}
+header .nav ul li .nav-appDown .nav-appText p {
+  width: 150px;
+  line-height: 18px;
+  color: #fff;
+  margin-left: 15px;
+  padding-top: 23px;
+}
+header .nav ul li .nav-appDown .nav-appPic {
+  padding-top: 20px;
+}
+header .nav ul li .nav-appDown .nav-appPic .link {
+  width: 142px;
+}
+header .nav ul li .nav-appDown .nav-appPic .link a {
+  color: #fff;
+  display: block;
+  height: 36px;
+  text-shadow: 2px 2px 2px #010101;
+}
+header .nav ul li .nav-appDown .nav-appPic .link a:last-child {
+  margin-top: 15px;
+}
+header .nav ul li .nav-appDown .nav-appPic .qrcode {
+  width: 88px;
+  text-align: center;
+}
+header .nav ul li .nav-appDown .nav-appPic .qrcode img {
+  width: 88px;
+}
+header .nav ul li .nav-appDown .nav-appPic .qrcode p {
+  color: #fff;
+  line-height: 20px;
+}
+header .login {
+  position: absolute;
+  top: 14px;
+  right: 50px;
+}
+header .login .search-form .searchBox {
+  width: 220px;
+  position: relative;
+}
+header .login .search-form .searchBox .searchText {
+  width: 202px;
+  height: 26px;
+  color: #fff;
+  background-color: #2f2f2f;
+  padding-left: 10px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+header .login .search-form .searchBox .searchBtn {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  position: absolute;
+  right: 22px;
+  top: 5px;
+  background: url("../images/searBtn.png") no-repeat;
+}
+header .login .login-link a {
+  color: #a0a0a0;
+  font-size: 13px;
+  display: inline-block;
+  margin: 0px 12px;
+}
+header .login .login-link a.logining {
+  position: relative;
+}
+header .login .login-link a.logining::after {
+  content: '';
+  width: 1px;
+  height: 100%;
+  background-color: #3d3d3d;
+  position: absolute;
+  right: -14px;
+}
+header .login .login-link a.experience {
+  width: 110px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  background: #50c8d7;
+  margin-right: 0;
+  border-radius: 15px;
+}
+
+/*顶部导航结束*/
+/*footer部分开始*/
+footer {
+  width: 100%;
+  min-width: 1200px;
+  background: url("../images/ft_bg.png") repeat;
+  padding-bottom: 45px;
+}
+footer .link {
+  width: 830px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+footer .link dl {
+  float: left;
+  width: 180px;
+}
+footer .link dl dt {
+  font-size: 15px;
+  color: #50c8d7;
+  padding-bottom: 16px;
+}
+footer .link dl dd {
+  font-size: 14px;
+  line-height: 24px;
+}
+footer .link dl dd a {
+  color: #818181;
+}
+footer .link dl dd a:hover {
+  text-decoration: underline;
+}
+footer .link .officially {
+  width: 110px;
+  float: left;
+}
+footer .link .officially p {
+  height: 24px;
+  line-height: 24px;
+  padding-left: 26px;
+}
+footer .link .officially p a {
+  color: #818181;
+}
+footer .link .officially p:first-child a:hover {
+  text-decoration: underline;
+}
+footer .link .officially p:last-of-type a {
+  cursor: default;
+}
+footer .link .officially p img {
+  padding-top: 10px;
+}
+
+/*footer部分结束*/

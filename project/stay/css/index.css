@@ -1,0 +1,510 @@
+@charset "UTF-8";
+/*css初始化*/
+html, input, textarea {
+  font: normal 12px 'Century Gothic', 'Helvetica', 'Hiragino Sans GB W3', 'Microsoft YaHei', '微软雅黑', 'SimSun', '宋体', 'Heiti', '黑体', 'Arial', 'sans-serif';
+}
+
+body, button, ul, li, ol, p, dl, dd, h1, h2, h3, h4, h5, h6, img, iframe, form, input, textarea, td, section, article, aside, dl, dt, dd {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style-type: none;
+  font-weight: normal;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #50c8d7;
+  text-decoration: none;
+}
+
+i, em {
+  font-style: normal;
+  text-decoration: none;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+}
+
+.w1150 {
+  width: 1150px;
+  margin: 0px auto;
+}
+
+.w1124 {
+  width: 1124px;
+  margin: 0px auto;
+}
+
+/*浮动*/
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix::before, .clearfix::after {
+  content: '';
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+/*三角形*/
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+}
+
+/*css初始化完成*/
+/*顶部导航开始*/
+header {
+  width: 100%;
+  min-width: 1200px;
+  height: 52px;
+  background-color: #000;
+  position: relative;
+}
+header .nav {
+  width: 720px;
+  height: 52px;
+  margin-left: 50px;
+  position: relative;
+}
+header .nav .logo {
+  width: 135px;
+  height: 27px;
+  display: block;
+  background: url("../images/logo2.png") no-repeat;
+  position: absolute;
+  top: 13px;
+}
+header .nav ul {
+  position: relative;
+  margin-left: 165px;
+}
+header .nav ul li {
+  float: left;
+  font: normal 13px "微软雅黑";
+  position: relative;
+}
+header .nav ul li > a {
+  display: block;
+  padding: 25px 21px 10px;
+  color: #FFF;
+  text-shadow: 2px 2px 2px #010101;
+  position: relative;
+}
+header .nav ul li > a.active {
+  color: #50c8d7;
+}
+header .nav ul li > a .new {
+  position: absolute;
+  top: 20px;
+  right: -8px;
+  color: #ff5b54;
+  font-size: 9px;
+}
+header .nav ul li .nav-appDown {
+  width: 230px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+  position: absolute;
+  top: 75px;
+  left: -80px;
+}
+header .nav ul li .nav-appDown::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 20px;
+  border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+  _border-style: dashed dashed solid dashed;
+  position: absolute;
+  top: -40px;
+  left: 115px;
+}
+header .nav ul li .nav-appDown .nav-appText {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5b5b5b;
+}
+header .nav ul li .nav-appDown .nav-appText p {
+  width: 150px;
+  line-height: 18px;
+  color: #fff;
+  margin-left: 15px;
+  padding-top: 23px;
+}
+header .nav ul li .nav-appDown .nav-appPic {
+  padding-top: 20px;
+}
+header .nav ul li .nav-appDown .nav-appPic .link {
+  width: 142px;
+}
+header .nav ul li .nav-appDown .nav-appPic .link a {
+  color: #fff;
+  display: block;
+  height: 36px;
+  text-shadow: 2px 2px 2px #010101;
+}
+header .nav ul li .nav-appDown .nav-appPic .link a:last-child {
+  margin-top: 15px;
+}
+header .nav ul li .nav-appDown .nav-appPic .qrcode {
+  width: 88px;
+  text-align: center;
+}
+header .nav ul li .nav-appDown .nav-appPic .qrcode img {
+  width: 88px;
+}
+header .nav ul li .nav-appDown .nav-appPic .qrcode p {
+  color: #fff;
+  line-height: 20px;
+}
+header .login {
+  position: absolute;
+  top: 14px;
+  right: 50px;
+}
+header .login .search-form .searchBox {
+  width: 220px;
+  position: relative;
+}
+header .login .search-form .searchBox .searchText {
+  width: 202px;
+  height: 26px;
+  color: #fff;
+  background-color: #2f2f2f;
+  padding-left: 10px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+header .login .search-form .searchBox .searchBtn {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  position: absolute;
+  right: 22px;
+  top: 5px;
+  background: url("../images/searBtn.png") no-repeat;
+}
+header .login .login-link a {
+  color: #a0a0a0;
+  font-size: 13px;
+  display: inline-block;
+  margin: 0px 12px;
+}
+header .login .login-link a.logining {
+  position: relative;
+}
+header .login .login-link a.logining::after {
+  content: '';
+  width: 1px;
+  height: 100%;
+  background-color: #3d3d3d;
+  position: absolute;
+  right: -14px;
+}
+header .login .login-link a.experience {
+  width: 110px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  background: #50c8d7;
+  margin-right: 0;
+  border-radius: 15px;
+}
+
+/*顶部导航结束*/
+/*footer部分开始*/
+footer {
+  width: 100%;
+  min-width: 1200px;
+  background: url("../images/ft_bg.png") repeat;
+  padding-bottom: 45px;
+}
+footer .link {
+  width: 830px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+footer .link dl {
+  float: left;
+  width: 180px;
+}
+footer .link dl dt {
+  font-size: 15px;
+  color: #50c8d7;
+  padding-bottom: 16px;
+}
+footer .link dl dd {
+  font-size: 14px;
+  line-height: 24px;
+}
+footer .link dl dd a {
+  color: #818181;
+}
+footer .link dl dd a:hover {
+  text-decoration: underline;
+}
+footer .link .officially {
+  width: 110px;
+  float: left;
+}
+footer .link .officially p {
+  height: 24px;
+  line-height: 24px;
+  padding-left: 26px;
+}
+footer .link .officially p a {
+  color: #818181;
+}
+footer .link .officially p:first-child a:hover {
+  text-decoration: underline;
+}
+footer .link .officially p:last-of-type a {
+  cursor: default;
+}
+footer .link .officially p img {
+  padding-top: 10px;
+}
+
+/*footer部分结束*/
+.main .main-banner {
+  width: 100%;
+  height: 650px;
+  overflow: hidden;
+  position: relative;
+}
+.main .main-banner ul {
+  width: 700%;
+  height: 650px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.main .main-banner ul li {
+  height: 650px;
+  float: left;
+}
+.main .main-banner ul li > .content {
+  width: 1200px;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+}
+.main .main-banner ul li > .content h1 {
+  font-size: 36px;
+  margin-top: 211px;
+}
+.main .main-banner ul li > .content p {
+  font-size: 15px;
+  line-height: 30px;
+  margin-top: 26px;
+}
+.main .main-banner ul li > .content a {
+  display: block;
+  width: 256px;
+  height: 46px;
+  color: #50c8d7;
+  font-size: 16px;
+  line-height: 46px;
+  text-align: center;
+  margin: 38px auto 0;
+  overflow: hidden;
+  position: relative;
+}
+.main .main-banner ul li > .content a:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+.main .main-banner ul li > .content a span {
+  position: absolute;
+  background-color: #50c8d7;
+}
+.main .main-banner ul li > .content a span.lineTop, .main .main-banner ul li > .content a span.lineBottom {
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+.main .main-banner ul li > .content a span.lineLeft, .main .main-banner ul li > .content a span.lineRight {
+  top: 0;
+  width: 2px;
+  height: 100%;
+}
+.main .main-banner ul li > .content a span.lineTop {
+  top: 0;
+  transform: translateX(-100%);
+}
+.main .main-banner ul li > .content a span.lineBottom {
+  bottom: 0;
+  transform: translateX(100%);
+}
+.main .main-banner ul li > .content a span.lineLeft {
+  left: 0;
+  transform: translateY(100%);
+}
+.main .main-banner ul li > .content a span.lineRight {
+  right: 0;
+  transform: translateY(-100%);
+}
+.main .main-banner ul li > .content a.run .lineTop {
+  transform: translateX(0);
+  transition: transform 0.2s;
+}
+.main .main-banner ul li > .content a.run .lineRight {
+  transform: translateY(0);
+  transition: transform 0.1s 0.2s;
+}
+.main .main-banner ul li > .content a.run .lineBottom {
+  transform: translateX(0);
+  transition: transform 0.2s 0.3s;
+}
+.main .main-banner ul li > .content a.run .lineLeft {
+  transform: translateY(0);
+  transition: transform 0.1s 0.5s;
+}
+.main .main-banner .btn-arrow {
+  display: none;
+  z-index: 10;
+}
+.main .main-banner .btn-arrow span {
+  display: block;
+  width: 25px;
+  height: 73px;
+  cursor: pointer;
+  background: url("../images/arrows5.png") no-repeat;
+  position: absolute;
+  top: 266px;
+}
+.main .main-banner .btn-arrow span.prev {
+  background-position: 0 -73px;
+  left: 160px;
+}
+.main .main-banner .btn-arrow span.prev:hover {
+  background-position: 0px 0px;
+}
+.main .main-banner .btn-arrow span.next {
+  background-position: -25px -73px;
+  right: 160px;
+}
+.main .main-banner .btn-arrow span.next:hover {
+  background-position: -25px 0px;
+}
+.main .ad .ad-left, .main .ad .ad-right {
+  width: 560px;
+  height: 160px;
+  background: #f4f4f4;
+  position: relative;
+}
+.main .ad .ad-left .img, .main .ad .ad-right .img {
+  transition: transform 0.6s ease-in-out;
+  position: absolute;
+  top: 50px;
+  left: 60px;
+}
+.main .ad .ad-left .img:hover, .main .ad .ad-right .img:hover {
+  -webkit-transform: rotate(360deg) scale(1.2);
+  -moz-transform: rotate(360deg) scale(1.2);
+  -ms-transform: rotate(360deg) scale(1.2);
+  -o-transform: rotate(360deg) scale(1.2);
+  transform: rotate(360deg) scale(1.2);
+}
+.main .ad .ad-left .text, .main .ad .ad-right .text {
+  float: right;
+  width: 380px;
+  height: 130px;
+  padding-top: 30px;
+}
+.main .ad .ad-left .text p, .main .ad .ad-right .text p {
+  padding-top: 16px;
+  color: #a0a0a0;
+}
+.main .ad .ad-left .text h3, .main .ad .ad-right .text h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #2f2f2f;
+}
+.main .ad .ad-left .text h3 span, .main .ad .ad-right .text h3 span {
+  display: inline-block;
+  animation-name: topDown;
+  animation-duration: .3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.main .ad .ad-left .text h3 span:nth-child(2), .main .ad .ad-right .text h3 span:nth-child(2) {
+  animation-delay: .3s;
+}
+.main .ad .ad-left .text h3 span:nth-child(3), .main .ad .ad-right .text h3 span:nth-child(3) {
+  animation-delay: .6s;
+}
+.main .ad .ad-left .text h3 span:nth-child(4), .main .ad .ad-right .text h3 span:nth-child(4) {
+  animation-delay: .9s;
+}
+.main .ad {
+  margin: 50px auto;
+}
+.main .ad .ad-left {
+  float: left;
+}
+.main .ad .ad-left .text a {
+  color: #84c6ca;
+}
+.main .ad .ad-right {
+  float: right;
+}
+.main .ad .ad-right .img .clock {
+  position: absolute;
+  top: 25px;
+  left: 27px;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes topDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-6px);
+  }
+}
