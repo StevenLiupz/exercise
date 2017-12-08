@@ -56,8 +56,7 @@ header {
     .logo {
       width: 135px;
       height: 27px;
-      display: block;
-      background: url("../images/logo2.png") no-repeat;
+      display: block;  
       position: absolute;
       top: 13px;
     }
@@ -67,12 +66,13 @@ header {
       li {
         float: left;
         font: normal 13px "微软雅黑";
+        cursor: pointer;
         position: relative;
         > a {
           display: block;
           padding: 25px 21px 10px;
           color: #FFF;
-          text-shadow: 2px 2px 2px #010101;
+          text-shadow: 2px 2px 2px #010101; 
           position: relative;
           &.active {
             color: $mainColor;
@@ -91,7 +91,7 @@ header {
           background-color: rgba(0,0,0,0.8);
           border-radius: 15px;
           position: absolute;
-          top: 75px;
+          top: 72px;
           left: -80px;
           &::before {
             content: '';
