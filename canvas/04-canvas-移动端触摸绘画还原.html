@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>canvas</title>
+</head>
+<body>
+    <canvas id="example" height="450" width="922" style="border:1px solid #333;"></canvas>
+
+    <script type="text/javascript" src="../lib/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+      var CanvasDrawr = function(options) {
+        // 这个是设定画布信息
+        var canvas = document.getElementById(options.id),
+            ctxt = canvas.getContext("2d");
+           
+        canvas.style.width = '100%';
+        canvas.width = canvas.offsetWidth;
+        canvas.style.width = '';
+        // 设定来自options的属性
+        ctxt.lineWidth = options.size || Math.ceil(Math.random() * 35);
+        ctxt.lineCap = options.lineCap || "round";
+        var lines = [];
+        var dotlist = [];
+        var offset = $(canvas).offset();
+
+        var self = {
+          //初始化，绑定touchstart 和 touchmove 事件
+          init: function() {        
+            canvas.addEventListener('touchstart', self.preDraw, false);
+            canvas.addEventListener('touchmove', self.draw, false);  
+
+            return canvas.addEventListener('touchend',function(){
+              return dotlist;
+            },false);      
+          },
+          preDraw: function(event) {//当touchstart时，获取相对canvas的x\y位置，画笔的颜色
+              // TouchEvent对象的touches属性的一个Touchlist对象，包含Touch当前接触表面的每个触点的对象列表
+              $.each(event.touches, function(i, touch) {
+                  var id      = touch.identifier, // identifier 当前触摸点的唯一编号
+                      colors  = ["red", "green", "yellow", "blue", "magenta", "orangered"],
+                      mycolor = colors[Math.floor(Math.random() * colors.length)];
+
+                  lines[id] = { x: this.pageX - offset.left, y: this.pageY - offset.top, color: mycolor };
+                  dotlist[id] = [this.pageX - offset.left,this.pageY - offset.top ]; 
+              });
+              event.preventDefault();
+          },
+          draw: function(event) {//touchmove开始划线
+              $.each(event.touches, function(i, touch) {
+                  var id = touch.identifier,
+                      moveX = this.pageX - offset.left - lines[id].x,
+                      moveY = this.pageY - offset.top - lines[id].y;//移动的x\y
+                  var ret = self.move(id, moveX, moveY);//canvas的画线
+                  
+                  lines[id].x = ret.x;
+                  lines[id].y = ret.y;
+                  dotlist.push([ret.x,ret.y]);
+                  console.log(dotlist)
+              });
+              event.preventDefault(); // 阻止触摸时浏览器的缩放、滚动条滚动等
+          },
+          move: function(i, changeX, changeY) {//这个地方需要了解下canvas的知识哦。
+              ctxt.strokeStyle = lines[i].color;//设定颜色
+              ctxt.beginPath();//开始路径
+              ctxt.moveTo(lines[i].x, lines[i].y);//移动到
+              ctxt.lineTo(lines[i].x + changeX, lines[i].y + changeY);//画线
+              ctxt.stroke();//填充颜色
+              ctxt.closePath();//结束路径
+              return { x: lines[i].x + changeX, y: lines[i].y + changeY };//返回最后的点坐标
+          }
+        };
+          self.init();
+          return dotlist;//运行init
+      };
+
+      $(function(){
+        var dot = new CanvasDrawr({id:"example", size: 15 });
+        console.log(dot);
+      });
+    </script>
+</body>
+</html>
