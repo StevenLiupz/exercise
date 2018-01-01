@@ -27,7 +27,8 @@
 
         var self = {
           //初始化，绑定touchstart 和 touchmove 事件
-          init: function() {        
+          init: function() {     
+          console.log($(canvas))  
             canvas.addEventListener('touchstart', self.preDraw, false);
             canvas.addEventListener('touchmove', self.draw, false);  
 
