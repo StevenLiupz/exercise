@@ -7,6 +7,7 @@ $(function(){
 	var dot = {}; // 记录绘制的点坐标
 	var linedots = []; // 初始化线条的点坐标集合
 	var alllines = []; // 初始化绘制的线条的集合
+	var linesdata = ""; // 用于模拟后台接收到的数据
 
 	// 获取不同设备下canvas画布的偏移，兼容画布在不同设备下所处的位置
 	var canvasLeft = parseInt(canvas.offsetLeft);
@@ -83,4 +84,52 @@ $(function(){
 			alert("对不起，您的浏览器不支持触屏事件！");
 		}
 	})
+
+	// 模拟向后台传输数据
+	$("#saw").on("click",function(){
+		linesdata = JSON.stringify(alllines);
+		console.log("linesdata:"+linesdata);
+	});
+
+	//使用回调的方式将手写汉字的矩阵画进画布
+	var i = 0;
+	function drawLine(data){
+		var j = 0;
+		var drawOne = setInterval(function(){
+		  if(data[i] != undefined && j<data[i].length-1){
+		    nctx.moveTo(data[i][j][0],data[i][j][1]);
+		    j++;
+		    if(data[i][j] == undefined){
+		      var end = data[i][data[i].length-1];
+		    }else{
+		      var end = data[i][j];
+		    }
+		    nctx.lineTo(end[0],end[1]);
+		    nctx.stroke();
+		    
+		  }else{
+		    clearInterval(drawOne);
+		    i++;
+		    if(i<data.length){
+		      drawLine(data);
+		    }
+		  }
+		},10)
+	} 
+
+	$("#review").on("click",function(){
+		var i = 0;
+		var ajaxdata = JSON.parse(linesdata); // 获取后台数据
+		console.log(ajaxdata);
+		// drawLine(ajaxdata);
+		
+		
+	})
+
+	function drawLine(data){
+		var j = 0;
+		var drawOne = setInterval(function(){
+			
+		},10);
+	}
 })
