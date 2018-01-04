@@ -90,46 +90,30 @@ $(function(){
 		linesdata = JSON.stringify(alllines);
 		console.log("linesdata:"+linesdata);
 	});
-
-	//使用回调的方式将手写汉字的矩阵画进画布
+	
 	var i = 0;
+	// 使用回调的方式进行重绘
 	function drawLine(data){
 		var j = 0;
 		var drawOne = setInterval(function(){
-		  if(data[i] != undefined && j<data[i].length-1){
-		    nctx.moveTo(data[i][j][0],data[i][j][1]);
-		    j++;
-		    if(data[i][j] == undefined){
-		      var end = data[i][data[i].length-1];
-		    }else{
-		      var end = data[i][j];
-		    }
-		    nctx.lineTo(end[0],end[1]);
-		    nctx.stroke();
-		    
-		  }else{
-		    clearInterval(drawOne);
-		    i++;
-		    if(i<data.length){
-		      drawLine(data);
-		    }
-		  }
-		},10)
-	} 
-
-	$("#review").on("click",function(){
-		var i = 0;
-		var ajaxdata = JSON.parse(linesdata); // 获取后台数据
-		console.log(ajaxdata);
-		// drawLine(ajaxdata);
-		
-		
-	})
-
-	function drawLine(data){
-		var j = 0;
-		var drawOne = setInterval(function(){
-			
+			if(data[i] != undefined && j < data[i].length-1){
+				nctx.moveTo(data[i][j][0],data[i][j][1]);
+				j++;
+				nctx.lineTo(data[i][j][0],data[i][j][1]);
+				nctx.stroke();
+			}else{
+				i++;
+				clearInterval(drawOne);
+				if(i < data.length){
+					drawLine(data);
+				}
+			}
 		},10);
 	}
+
+	$("#review").on("click",function(){
+		var ajaxdata = JSON.parse(linesdata); // 获取后台数据
+		console.log(ajaxdata);
+		drawLine(ajaxdata);
+	})
 })
