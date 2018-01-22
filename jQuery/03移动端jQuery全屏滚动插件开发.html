@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta http-equiv="Content-Type" content="text/html">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<title>jQuery移动端全屏滚动插件开发</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		html {
+			font-size: 14px;
+		}
+
+		html,body,#fullpage {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		#fullpage .section {
+			width: 100%;
+			height: 100%;
+		}
+
+		#fullpage .section {
+			color: #fff;
+			text-align: center;
+			padding: 2rem 2rem;
+		}
+		#fullpage .section:nth-of-type(1) {
+			background: hotpink;
+		}
+		#fullpage .section:nth-of-type(2) {
+			background: orange;
+		}
+		#fullpage .section:nth-of-type(3) {
+			background: purple;
+		}
+	</style>
+</head>
+<body>
+	<div id="fullpage">
+		<div class="section">第一屏</div>
+		<div class="section">第二屏</div>
+		<div class="section">第三屏</div>
+	</div>
+
+	<script type="text/javascript" src="../lib/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../myPlugins/jquery.fullPage.Scroll.js"></script>
+	<script type="text/javascript">
+
+	</script>
+</body>
+</html>
