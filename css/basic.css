@@ -1,0 +1,160 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: 'lantingsc';
+  src: url('./lantingsc.ttf');
+}
+
+body, 
+h1,
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+hr, 
+p, 
+blockquote, 
+dl, 
+dt, 
+dd, 
+ul, 
+ol, 
+li, 
+pre, 
+form, 
+fieldset, 
+legend, 
+button, 
+input, 
+textarea, 
+th, 
+td { 
+  margin:0; 
+  padding:0; 
+  font-weight: normal;
+} 
+body, 
+button, 
+input, 
+select, 
+textarea {
+  font-family:"Microsoft YaHei","Arial","OpenSansLight","\5FAE\8F6F\96C5\9ED1" ,Verdana;
+  /*font-family:"Microsoft YaHei","Arial","lantingsc","OpenSansLight","\5FAE\8F6F\96C5\9ED1" ,Verdana;*/
+} 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6{
+  font-size:100%; 
+} 
+address, 
+cite, 
+dfn, 
+em, 
+var {
+  font-style:normal; 
+} 
+code, 
+kbd, 
+pre, 
+samp {
+  font-family:couriernew, courier, monospace; 
+} 
+small{
+  font-size:12px; 
+} 
+ul, 
+ol {
+  list-style:none; 
+} 
+a {
+  text-decoration:none; 
+} 
+a:hover {
+  text-decoration:none; 
+} 
+.nav_link {
+	color: #fff!important;
+}
+sup {
+  vertical-align:text-top;
+} 
+sub{
+  vertical-align:text-bottom; 
+} 
+legend {
+  color:#000; 
+} 
+fieldset, 
+img {
+  border:0; 
+} 
+button,
+input, 
+select, 
+textarea { 
+  font-size:100%; 
+} 
+table {
+  border-collapse:collapse;
+  border-spacing:0; 
+}
+html {
+  height:100%;
+  font-size:16px;
+}
+body {
+  height:100%;
+  overflow-x:hidden;
+  background:#FFF;
+}
+header div, footer div { box-sizing: content-box !important; }
+input, button, input:focus { outline: none; border: none; }
+a, button { border: none; text-decoration: none; }
+/*去除input在Chrome浏览器中默认的黄色背景色*/
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  background-color: transparent;
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;  
+}
+/*IE10+以上input获取焦点时去除文本框的×图标和密码框的眼睛图标，IE9及以下无效*/
+input::-ms-clear, input::-ms-reveal {
+  display: none; 
+}
+/*设置input placeholder的字体颜色*/
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #a4a4a4;
+  font-size: 14px;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #a4a4a4 !important;
+  font-size: 14px !important;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #a4a4a4;
+  font-size: 14px;
+}
+/*去除input number浏览器自带的上下箭头*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+input[type="number"] { /*FireFox下*/
+  -moz-appearance:textfield;
+}
+
+/* 清除浮动 */
+.fl { float: left; }
+.fr { float: right; }
+.clearfix:before,
+.clearfix:after {
+  content: ' ';
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
