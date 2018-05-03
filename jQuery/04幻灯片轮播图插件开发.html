@@ -2,14 +2,11 @@
 <html lang="zh">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
-
 <head>
     <meta charset="UTF-8">
     <title>幻灯片轮播图插件开发</title>
     <link rel="stylesheet" type="text/css" href="../css/basic.css">
     <link rel="stylesheet" type="text/css" href="../css/swiper.css">
-    <script src="../lib/jquery-1.11.3.min.js"></script>
-    <script src="../lib/swiper.js"></script>
 </head>
 
 <body>
@@ -17,55 +14,27 @@
         <div class="main">
             <div class="swiper-container">
                 <div class="swiper-list">
+                    <div id="app"></div>
                     <ul class="clearfix" id="swiper-list">
-                        <li class="active" data-src="./images/product_1.jpg">
-                            <a href="javascript:;"><img src="./images/product_1.jpg" alt=""></a>
-                        </li>
-                        <li data-src="./images/product_2.jpg">
-                            <a href="javascript:;"><img src="./images/product_2.jpg" alt=""></a>
-                        </li>
-                        <li data-src="./images/product_3.jpg">
-                            <a href="javascript:;"><img src="./images/product_3.jpg" alt=""></a>
-                        </li>
-                        <li data-src="./images/product_4.jpg">
-                            <a href="javascript:;"><img src="./images/product_4.jpg" alt=""></a>
-                        </li>
-                        <li data-src="./images/product_5.jpg">
-                            <a href="javascript:;"><img src="./images/product_5.jpg" alt=""></a>
-                        </li>
-                        <li data-src="./images/product_4.jpg">
-                            <a href="javascript:;"><img src="./images/product_6.jpg" alt=""></a>
-                        </li>
-                        <li data-src="./images/product_5.jpg">
-                            <a href="javascript:;"><img src="./images/product_7.jpg" alt=""></a>
-                        </li>
+                        <!-- <li class="active" data-src="">
+                            <a href="javascript:;"><img src="" alt=""></a>
+                        </li> -->
+                        <script id="imagelist" type="text/html">
+                            {{each imgArr}}
+                                <li data-src="{{$value}}">
+                                    <a href="javascript:;"><img src="{{$value}}" alt=""></a>
+                                </li>
+                            {{/each}}
+                        </script>
                     </ul>
                 </div>
                 <div class="swiper-nav-wrap clearfix">
                     <div class="swiper-btn prev fl" id="swiper-prev"></div>
                     <div class="swiper-nav fl">
                         <ul class="clearfix" id="swiper-nav">
-                            <li class="active">
-                                <a href="javascript:;"><img src="./images/product_1.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><img src="./images/product_2.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><img src="./images/product_3.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><img src="./images/product_4.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><img src="./images/product_5.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><img src="./images/product_6.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><img src="./images/product_7.jpg" alt=""></a>
-                            </li>
+                            <!-- <li class="active">
+                                <a href="javascript:;"><img src="" alt=""></a>
+                            </li> -->
                         </ul>
                     </div>
                     <div class="swiper-btn next fl" id="swiper-next"></div>
@@ -83,6 +52,9 @@
             <div class="swiper-btn-close" id="swiper-btn-close"></div>
         </div>
     </div>
-</body>
 
+    <script src="../lib/jquery-1.11.3.min.js"></script>
+    <script src="../lib/template-web.js"></script>
+    <script src="../lib/swiper.js"></script>
+</body>
 </html>
