@@ -119,6 +119,7 @@ li {
     margin-right: 10px;
     position: relative;
     box-sizing: border-box;
+    border: 1px solid transparent;
 }
 
 .swiper-nav li:last-of-type {
@@ -128,16 +129,18 @@ li {
 .swiper-nav li a {
     display: block;
     height: 62px;
-    border: 1px solid transparent;
+}
+.swiper-nav li a img {
+    height: 62px;
 }
 
-.swiper-nav li.active a::before {
+.swiper-nav li.active::before {
     content: '';
     width: 64px;
     height: 2px;
     background: rgba(0, 124, 168, .6);
     position: absolute;
-    bottom: -1px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     -ms-transform: translateX(-50%);
@@ -145,7 +148,7 @@ li {
     -webkit-transform: translateX(-50%);
 }
 
-.swiper-nav li a:hover {
+.swiper-nav li:hover {
     border: 1px solid rgba(0, 124, 168, .6);
 }
 
