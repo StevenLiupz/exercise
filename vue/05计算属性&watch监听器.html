@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>名字： {{fullName}}</div>
+        <div>年龄： {{age}}</div>
+    </div>
+
+    <script>
+        var App = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'Steven',
+                lastName: 'Liu',
+                // fullName: '',
+                age: 25
+            },
+            // 计算属性 - 顾名思义是通过计算得到的，因此计算属性是一个函数
+            computed: {
+                // 计算属性的缓存机制 - 当计算属性依赖的data数据没有发生改变时，是不会再次进行计算的，有利于提高性能
+                fullName() { // 如果一个属性作为计算属性了，就不能在data里再次定义同名的数据，否则会报错
+                    console.log('计算属性计算了一次');
+                    return this.firstName + this.lastName; // 要将计算得到的结果返回出去
+                } 
+            }
+            // 当一个功能既可以通过computed实现也可以通过watch实现时，推荐使用computed，代码更简洁
+            // watch监听器
+            // watch: {
+            //     // watch 跟computed类似，也有缓存机制，只有监听的数据发生变化时才会进行监听器的计算
+            //     firstName() { // 监听firstName的变化
+            //         console.log('firstName计算了一次')
+            //         this.fullName = this.firstName + ' ' + this.lastName;
+            //     },
+            //     lastName() { // 监听lastName的变化
+            //         console.log('lastName计算了一次')
+            //         this.fullName = this.firstName + ' ' + this.lastName;
+            //     }
+            // }
+        });
+    </script>
+</body>
+</html>

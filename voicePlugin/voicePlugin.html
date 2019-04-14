@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音乐播放插件</title>
+    <link rel="stylesheet" href="../css/voicePlugin.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            background-color: #f7f7f7;
+        }
+        body {
+            padding: 20px 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="voice-container">
+        <div class="voice-icon">
+            <div class="voice-icon-img" id="audio-btn"></div>
+        </div>
+        <div class="voice-content">
+            <div class="voice-c-wrap">
+                <p class="voice-name">可乐 - 陈教授</p>
+                <p class="voice-source">来自互联网</p>
+                <div class="voice-progress">
+                    <p class="voice-p-line">
+                        <span class="voice-p-line-progress" id="progress"></span>
+                    </p>
+                    <p class="voice-p-line-dot" id="progress-dot"></p>
+                </div>
+                <div class="voice-p-time clearfix">
+                    <span class="voice-p-time-start fl" id="currentTime">00:00</span>
+                    <span class="voice-p-time-end fr" id="allTime">00:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/voicePlugin.js"></script>
+</body>
+</html>

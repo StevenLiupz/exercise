@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性setter的使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>当Vue遇到差值表达式时，首先会在data里面找是否有该数据，如果没有，就会去计算属性里面找</div>
+        <div>{{fullName}} {{age}}</div>
+    </div>
+
+    <script>
+        var App = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'Steven',
+                lastName: 'Liu',
+                age: 25
+            },
+            computed: {
+                fullName: {
+                    // 定义一个计算属性，当取这个计算属性的值时get方法会被执行；当去设置计算属性的值时，set方法会被执行
+                    // getter - 计算属性默认只有getter
+                    get() {
+                        return this.firstName + this.lastName;
+                    },
+                    // setter 
+                    set(value) {
+                        // 这里的value就是计算属性被设置的值
+                        console.log('设置了计算属性的值：' + value);
+                        var arr = value.split(' ');
+                        // setter的用法 - 在setter里去重新设置计算属性依赖的值，计算属性就会被重新计算
+                        this.firstName = arr[0];
+                        this.lastName = arr[1];
+                    }
+                }
+                // 如果不需要做过于复杂的计算不需要用到setter时，直接这样写更加简洁
+                // fullName() {
+                //     return this.firstName + this.lastName;
+                // }
+            }
+        });
+    </script>
+</body>
+</html>

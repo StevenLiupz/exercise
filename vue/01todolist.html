@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>todolist</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" name="" v-model="textValue">
+		<button @click="setValue">提交</button>
+		<ul>
+			<li v-for="item in list">{{item.name}}</li>
+		</ul>
+	</div>
+
+	<script>
+		var App = new Vue({
+			el: '#app',
+			data: {
+				textValue: '',
+				list: []
+			},
+			methods: {
+				setValue: function() {
+					this.list.push({name: this.textValue});
+					console.log(this.list)
+					this.textValue = '';
+				}
+			}
+		})
+	</script>
+</body>
+</html>

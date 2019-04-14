@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件-父组件向子组件传值</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+		<input type="text" name="" v-model="textValue">
+		<button @click="setValue">提交</button>
+		<ul>
+			<todo-item v-bind:item="obj" v-for="obj in list"></todo-item>
+		</ul>
+	</div>
+
+    <script>
+    	// 全局组件直接使用
+    	// Vue.component('TodoItem', {
+    	// 	props: [
+    	// 		"content"
+    	// 	],
+    	// 	template: '<li>{{content.name}}</li>'
+    	// })
+
+    	// 局部组件
+    	var TodoItem = {
+    		// props指的是外部传递进来的数据，如果要接收外部传递进来的数据，在props中定义即可
+    		props: ["item"], 
+    		template: "<li>{{item.name}}</li>"
+    	};
+
+    	var App = new Vue({	
+    		el: "#app",
+    		// 局部组件要在Vue实例中引入
+    		components: {
+    			// TodoItem: TodoItem, 
+    			TodoItem // 如果名字相同，只写一个名字即可
+    		},
+    		data: {
+    			textValue: '',
+    			list: []
+    		},
+    		methods: {
+    			setValue(){
+    				this.list.push({name: this.textValue});
+    				console.log(this.list);
+    				this.textValue = '';
+    			}
+    		}
+    	})
+    </script>	
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件-子组件向父组件传值</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+    	<input type="text" name="" v-model="textValue">
+    	<button @click="addItem">提交</button>
+    	<ul>
+    		<!-- 子组件在引用时监听子组件的事件 -->
+    		<todo-item v-for="(item,index) in list" :item="item" :index="index" @delete="handler"></todo-item>
+    	</ul>
+    </div>
+
+    <script>
+    	// 创建局部组件
+    	var TodoItem = {
+    		// props用于接收父组件传入的数据
+    		props: ["item", "index"],
+    		template: "<li @click='deleteSon'>{{index}} {{item.name}}</li>",
+    		methods: {
+    			deleteSon(){
+    				// 子组件向父组件传值，通过$emit向外触发事件，并可以向外传值
+    				this.$emit("delete", this.index);
+    			}
+    		}
+    	}
+
+    	// 创建Vue实例
+    	var App = new Vue({
+    		el: "#app",
+    		components: { // 注册子组件
+    			TodoItem
+    		},
+    		data: {
+    			textValue: '',
+    			list: []
+    		},
+    		methods: {
+    			addItem(){
+    				// 在方法中直接通过this就可以访问实例的数据和方法
+    				this.list.push({name: this.textValue});
+    				this.textValue = '';
+    			},
+    			// 父组件监听到子组件的事件后执行相应的操作
+    			handler(options){
+    				// 参数用来接收子组件传递的值
+    				console.log(options);
+					this.list.splice(options,1);    				
+    			}
+    		}
+    	})
+    </script>
+</body>
+</html>

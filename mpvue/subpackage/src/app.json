@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/logs/main",
+    "pages/counter/main"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/task/",
+      "pages": [
+          "taskList/main"
+      ]
+    },
+    {
+      "root": "pages/colleckWalk/",
+      "pages": [
+          "home/main"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}
